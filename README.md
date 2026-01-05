@@ -191,13 +191,16 @@ The demo prints:
 - a TTL key being removed by the background cleanup loop
 - current keys in MRU → LRU order
 
+- 
 ## Why This Matters for Backend Engineers
 
-Even if you never implement a cache from scratch at work, understanding the internals pays off:
+I built this project to understand how an in-memory cache actually works under the hood.
 
-- You can reason about latency and throughput trade-offs when adding caching to a system
-- You can spot correctness issues (stale data, race conditions, memory growth)
-- You learn how TTL and eviction interact under real load
-- You practice ownership boundaries for long-lived goroutines and graceful shutdown
+Working through it helped me think more clearly about:
+- latency vs throughput trade-offs when adding caching
+- correctness issues like stale data, race conditions, and memory growth
+- how TTL and eviction interact in real usage
+- how to manage long-lived goroutines and shut them down cleanly
 
-Building this manually forces you to confront the same core design constraints you hit in production systems: data structure choice, concurrency correctness, and lifecycle management.
+Building this by hand forced me to deal with the same core constraints you hit in real systems: data structures, concurrency correctness, and lifecycle management.
+
